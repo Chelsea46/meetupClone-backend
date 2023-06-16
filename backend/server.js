@@ -1,13 +1,12 @@
-import express from "express"
-import dotenv from 'dotenv'
-dotenv.config()
+const express = require('express')
+const dotenv = require('dotenv').config()
 
-import {errorHandler} from './middleware/errorMiddleware.js'
-import { connectDB } from "./config/db.js"
-import router from "./routes/activityRoutes.mjs";
+const errorHandler = require('./middleware/errorMiddleware.js')
+const connectDB = require("./config/db.js")
+const router = require("./routes/activityRoutes.mjs")
 
-const port = process.env.PORT || 5000;
-// process not working. ChatGPT saying it's because it isnt in a node environement due to being a vite app
+const port = process.env.PORT || 5000
+
 
 connectDB()
 
