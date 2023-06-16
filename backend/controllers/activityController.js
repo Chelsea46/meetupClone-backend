@@ -9,6 +9,7 @@ const getActivity = asyncHandler(async (req, res) => {
 
 // Create Activity, POST /api/activity
 const setActivity = asyncHandler(async (req, res) => {
+    console.log(req.body)
     if(!req.body.text){
         res.status(400)
         throw new Error('Please add text field')
@@ -39,13 +40,13 @@ const updateActivity = asyncHandler(async (req, res) => {
 //  Delete Activity, DELETE /api/activity/:id
 const removeActivity = asyncHandler(async (req, res) => {
 
-    const activity = await Activity.findById(req.params.id)
+    const activity = await Activity.findByIdAndDelete(req.params.id)
     if(!activity){
         res.status(400)
         throw new Error('Activity not found')
     }
 
-    await activity.remove()
+    
 
     res.status(200).json({id: req.params.id})
 })
