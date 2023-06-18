@@ -1,9 +1,28 @@
 const mongoose = require('mongoose')
 
 const activitySchema = mongoose.Schema({
-    text: {
+    activityName: {
         type: String,
-        requires: [true, 'Please add a value']
+        requires: [true, 'Please add name of activity']
+    },
+    activityType: {
+        type: String,
+        requires: [true, 'Please add what type of activity']
+    },
+    creatorName: {
+        type: String,
+        requires: [true, 'Please add a creator']
+    },
+    activityCity: {
+        type: String,
+        requires: [true, 'Please add a city']
+    },
+    activityDate: {
+        type: Date,
+        requires: [true, 'Please add a date']
+    },
+    enrolled: {
+        type: String
     }
 }, {
     timestamps:true

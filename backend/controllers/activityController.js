@@ -9,14 +9,17 @@ const getActivity = asyncHandler(async (req, res) => {
 
 // Create Activity, POST /api/activity
 const setActivity = asyncHandler(async (req, res) => {
-    console.log(req.body)
-    if(!req.body.text){
-        res.status(400)
-        throw new Error('Please add text field')
-    }
-
+    
+    // if(!req.body.text){
+    //     res.status(400)
+    //     throw new Error('Please add text field')
+    // }
     const activity = await Activity.create({
-        text: req.body.text,
+        activityName: req.body.name,
+        activityType: req.body.type,
+        creatorName: req.body.creator,
+        activityCity: req.body.city,
+        activityDate: new Date(req.body.date)
     })
 
     res.status(200).json(activity)
@@ -24,15 +27,27 @@ const setActivity = asyncHandler(async (req, res) => {
 
 // Update Activity, PUT /api/activity/:id
 const updateActivity = asyncHandler(async (req, res) => {
-
+    console.log(req.body)
     const activity = await Activity.findById(req.params.id)
 
-    if(!activity){
-        res.status(400)
-        throw new Error('Activity not found')
-    }
+    // if(!activity){
+    //     res.status(400)
+    //     throw new Error('Activity not found')
+    // }
 
-    const updatedActivity = await Activity.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    const updatedActivity = await Activity.findByIdAndUpdate(req.params.id, {    
+        activityName: req.body.name,
+        activityType: req.body.type,
+        creatorName: req.body.creator,
+        activityCity: req.body.city,
+        activityDate: new Date(req.body.date),
+        enrolled: {
+            enrolledFirstName: req.body.enrolledFirstName,
+            enrolledLastName: req.body.enrolledLastName,
+            enrolledEmail: req.body.enrolledEmail
+        }
+    },
+    {new: true})
 
     res.status(200).json(updatedActivity)
 })
