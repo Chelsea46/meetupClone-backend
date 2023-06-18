@@ -21,10 +21,20 @@ const activitySchema = mongoose.Schema({
         type: Date,
         requires: [true, 'Please add a date']
     },
-    enrolled: {
-        type: String
-    }
-}, {
+    enrolled: [
+        {
+          enrolledFirstName: {
+            type: String,
+          },
+          enrolledLastName: {
+            type: String,
+          },
+          enrolledEmail: {
+            type: String,
+          },
+        },
+      ],
+   }, {
     timestamps:true
 }
 )

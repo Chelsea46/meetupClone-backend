@@ -19,7 +19,12 @@ const setActivity = asyncHandler(async (req, res) => {
         activityType: req.body.type,
         creatorName: req.body.creator,
         activityCity: req.body.city,
-        activityDate: new Date(req.body.date)
+        activityDate: new Date(req.body.date),
+        enrolled: {
+            enrolledFirstName: req.body.enrolledFirstName,
+            enrolledLastName: req.body.enrolledLastName,
+            enrolledEmail: req.body.enrolledEmail
+        }
     })
 
     res.status(200).json(activity)
