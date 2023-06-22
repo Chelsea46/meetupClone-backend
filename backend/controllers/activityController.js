@@ -31,12 +31,7 @@ const setActivity = asyncHandler(async (req, res) => {
         activityType: req.body.type,
         creatorName: req.body.creator,
         activityCity: req.body.city,
-        activityDate: new Date(req.body.date),
-        // enrolled: {
-        //     enrolledFirstName: req.body.enrolledFirstName,
-        //     enrolledLastName: req.body.enrolledLastName,
-        //     enrolledEmail: req.body.enrolledEmail
-        // }
+        activityDate: new Date(req.body.date)
     })
 
     res.status(200).json(activity)
@@ -65,7 +60,6 @@ const updateActivity = asyncHandler(async (req, res) => {
 
 // Update Enrolled, PUT /api/activity/:id
 const updateEnrolled = asyncHandler(async (req, res) => {
-    console.log(req.body)
     const activity = await Activity.findById(req.params.id)
   
     if (!activity) {

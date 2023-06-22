@@ -25,12 +25,15 @@ const activitySchema = mongoose.Schema({
         {
           enrolledFirstName: {
             type: String,
+            requires: [true, 'Please add a first name']
           },
           enrolledLastName: {
             type: String,
+            requires: [true, 'Please add a last name']
           },
           enrolledEmail: {
             type: String,
+            requires: [true, 'Please add an email']
           },
         },
       ],
