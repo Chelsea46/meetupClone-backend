@@ -33,6 +33,7 @@ const setActivity = asyncHandler(async (req, res) => {
         activityCity: req.body.city,
         activityDate: new Date(req.body.date)
     })
+    console.log('activity added')
 
     res.status(200).json(activity)
 })
